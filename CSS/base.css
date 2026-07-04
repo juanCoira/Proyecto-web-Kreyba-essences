@@ -1,0 +1,127 @@
+/* ==========================================================================
+   KREYBA ESSENCES - Variables Globales y Reset
+   ========================================================================== */
+
+:root {
+  /* --- PALETA DE COLORES (Light Mode Default) --- */
+  /* Colores Base */
+  --color-bg: #FFFFFF;
+  --color-bg-alt: #F8F8F8; /* Gris muy claro para contrastes suaves */
+  --color-text: #111111; /* Negro suave, más elegante que un #000 puro */
+  --color-text-muted: #666666; /* Gris oscuro para textos secundarios */
+  
+  /* Colores de Acento y Detalles Premium */
+  --color-champagne: #F2EBE5;
+  --color-gold-mate: #C5A059;
+  --color-beige: #EAE6DF;
+  
+  /* --- EFECTOS GLASSMORPHISM --- */
+  --glass-bg: rgba(255, 255, 255, 0.75);
+  --glass-border: rgba(255, 255, 255, 0.3);
+  --glass-blur: blur(16px);
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
+
+  /* --- SOMBRAS (Soft Shadows) --- */
+  --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.08);
+
+  /* --- TIPOGRAFÍA --- */
+  /* Utilizaremos una pila sans-serif limpia temporalmente. 
+     Más adelante integraremos fuentes premium (ej. Inter o un mix con una serif elegante para títulos). */
+  --font-primary: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  
+  /* --- ESPACIADOS Y LAYOUT (Minimalismo) --- */
+  --container-max: 1200px;
+  --spacing-xs: 0.5rem;   /* 8px */
+  --spacing-sm: 1rem;     /* 16px */
+  --spacing-md: 2rem;     /* 32px */
+  --spacing-lg: 4rem;     /* 64px */
+  --spacing-xl: 8rem;     /* 128px - Para el "espacio en blanco" vital del minimalismo */
+
+  /* --- BORDES Y ANIMACIONES --- */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px; /* Bordes suaves estilo Apple */
+  --transition-base: all 300ms ease; /* Los 300ms exactos que solicitaste */
+  --transition-smooth: all 500ms cubic-bezier(0.25, 1, 0.5, 1); /* Para slides y revelados */
+}
+
+/* --- MODO OSCURO (Premium Add-on) --- */
+[data-theme="dark"] {
+  --color-bg: #0A0A0A;
+  --color-bg-alt: #141414;
+  --color-text: #F5F5F5;
+  --color-text-muted: #A0A0A0;
+  
+  --color-champagne: #2A2520; /* Adaptación sutil para modo oscuro */
+  --color-gold-mate: #B38E47;
+  --color-beige: #1E1C1A;
+  
+  --glass-bg: rgba(10, 10, 10, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.05);
+  --glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+
+  --shadow-soft: 0 8px 30px rgba(0, 0, 0, 0.6);
+  --shadow-hover: 0 12px 40px rgba(0, 0, 0, 0.8);
+}
+
+/* ==========================================================================
+   RESET CSS GLOBAL
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth; /* Scroll suave nativo */
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased; /* Suavizado de fuentes en Mac/iOS */
+  -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-base), color var(--transition-base); /* Transición suave al cambiar de modo */
+  overflow-x: hidden; /* Evita scroll horizontal accidental */
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: var(--transition-base);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+button, input, select, textarea {
+  font-family: inherit;
+  border: none;
+  background: none; 
+  outline: none;
+}
+
+button {
+  cursor: pointer;
+}
+
+img, picture, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Utilidad base para contenedores */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 var(--spacing-sm);
+}

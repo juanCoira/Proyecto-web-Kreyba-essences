@@ -14,6 +14,7 @@
 
   <div id="scroll-progress" class="scroll-progress-bar"></div>
 
+  <!-- HEADER PRINCIPAL -->
   <header id="main-header" class="main-header">
     <div class="container header-container">
       
@@ -27,13 +28,22 @@
         <nav class="desktop-nav">
           <ul class="nav-list">
             <li><a href="#inicio" class="nav-link active">Inicio</a></li>
+            
+            <!-- DROPDOWN DESKTOP PREMIUM -->
             <li class="nav-item-dropdown">
-              <a href="#productos" class="nav-link">Productos</a>
+              <a href="#productos" class="nav-link" style="display: flex; align-items: center; gap: 4px;">
+                Productos
+                <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M6 9l6 6 6-6"/></svg>
+              </a>
               <ul class="dropdown-menu">
-                <li><a href="#perfumes">Perfumes</a></li>
-                <li><a href="#esencias">Esencias</a></li>
+                <li><a href="#mujer">Perfumes Mujer</a></li>
+                <li><a href="#hombre">Perfumes Hombre</a></li>
+                <li><a href="#importados">Importados</a></li>
+                <li><a href="#esencias">Esencias de Hogar</a></li>
+                <li><a href="#combos">Combos & Regalos</a></li>
               </ul>
             </li>
+            
             <li><a href="#promociones" class="nav-link">Promociones</a></li>
           </ul>
         </nav>
@@ -64,9 +74,48 @@
           </button>
         </div>
       </div>
-
     </div>
   </header>
+
+  <!-- OVERLAY MENÚ MOBILE FULLSCREEN -->
+  <div id="mobile-menu" class="mobile-menu-overlay">
+    <div class="mobile-menu-content">
+      <ul class="mobile-nav-list">
+        <li><a href="#inicio" class="mobile-nav-link">Inicio</a></li>
+        
+        <!-- ACORDEÓN MOBILE -->
+        <li class="mobile-dropdown-container">
+          <div class="mobile-nav-link-wrapper">
+            <span class="mobile-nav-link">Productos</span>
+            <button id="mobile-submenu-toggle" class="mobile-toggle-btn" aria-label="Abrir submenú">
+              <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="1.5" fill="none" style="transition: transform 0.3s ease;"><path d="M6 9l6 6 6-6"/></svg>
+            </button>
+          </div>
+          <ul id="mobile-submenu" class="mobile-submenu-list">
+            <li><a href="#mujer" class="mobile-sub-link">Perfumes Mujer</a></li>
+            <li><a href="#hombre" class="mobile-sub-link">Perfumes Hombre</a></li>
+            <li><a href="#importados" class="mobile-sub-link">Importados</a></li>
+            <li><a href="#esencias" class="mobile-sub-link">Esencias de Hogar</a></li>
+            <li><a href="#combos" class="mobile-sub-link">Combos & Regalos</a></li>
+          </ul>
+        </li>
+
+        <li><a href="#promociones" class="mobile-nav-link">Promociones</a></li>
+        <li><a href="#nosotros" class="mobile-nav-link">Nosotros</a></li>
+        <li><a href="#contacto" class="mobile-nav-link">Contacto</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ZONA DE PRUEBAS DE LAYOUT -->
+  <main id="main-content" style="padding: var(--spacing-xl) 0; min-height: 200vh;">
+    <div class="container">
+      <h1 style="text-align: center; margin-bottom: var(--spacing-lg); font-weight: 300; font-size: 2.5rem; letter-spacing: 0.1em; padding-top: var(--spacing-lg);">CATÁLOGO</h1>
+      <div id="test-product-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--spacing-md);">
+        <!-- Cards inyectadas por JS -->
+      </div>
+    </div>
+  </main>
 
   <script src="js/components/ui.js"></script>
   <script src="js/main.js"></script>

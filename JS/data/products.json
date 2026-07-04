@@ -1,0 +1,66 @@
+[
+  {
+    "id": "PRD-001",
+    "name": "Oud Imperial",
+    "inspiredBy": "Tom Ford Oud Wood",
+    "price": 45000,
+    "category": "Perfumes",
+    "gender": "Unisex",
+    "olfactoryFamily": "Amaderada",
+    "notes": {
+      "top": "Palo de rosa, Cardamomo",
+      "heart": "Madera de Oud, Sándalo",
+      "base": "Vainilla, Ámbar"
+    },
+    "image": "https://placehold.co/600x800/EAE6DF/111111?text=OUD+IMPERIAL",
+    "badges": ["Más vendido", "Premium"]
+  },
+  {
+    "id": "PRD-002",
+    "name": "Santal Rouge",
+    "inspiredBy": "Baccarat Rouge 540",
+    "price": 48000,
+    "category": "Perfumes",
+    "gender": "Femenino",
+    "olfactoryFamily": "Floral Oriental",
+    "notes": {
+      "top": "Azafrán, Jazmín",
+      "heart": "Amberwood, Ámbar gris",
+      "base": "Resina de abeto, Cedro"
+    },
+    "image": "https://placehold.co/600x800/F2EBE5/111111?text=SANTAL+ROUGE",
+    "badges": ["Edición Limitada"]
+  },
+  {
+    "id": "PRD-003",
+    "name": "Aqua Di Nuit",
+    "inspiredBy": "Acqua Di Gio Profumo",
+    "price": 42000,
+    "category": "Perfumes",
+    "gender": "Masculino",
+    "olfactoryFamily": "Acuática Aromática",
+    "notes": {
+      "top": "Notas marinas, Bergamota",
+      "heart": "Romero, Salvia",
+      "base": "Incienso, Pachulí"
+    },
+    "image": "https://placehold.co/600x800/EAE6DF/111111?text=AQUA+DI+NUIT",
+    "badges": ["Nuevo"]
+  },
+  {
+    "id": "PRD-004",
+    "name": "Esencia Vainilla Noir",
+    "inspiredBy": "Creación Exclusiva",
+    "price": 15000,
+    "category": "Esencias",
+    "gender": "Home",
+    "olfactoryFamily": "Gourmand",
+    "notes": {
+      "top": "Almendra tostada",
+      "heart": "Orquídea de vainilla",
+      "base": "Haba Tonka, Almizcle"
+    },
+    "image": "https://placehold.co/600x800/C5A059/FFFFFF?text=VAINILLA+NOIR",
+    "badges": []
+  }
+]
