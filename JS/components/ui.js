@@ -40,8 +40,11 @@ function initMobileMenu() {
   const menuToggle = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
   const body = document.body;
-  const submenuToggleBtn = document.getElementById('mobile-submenu-toggle');
+  
+  // Ahora seleccionamos TODO el contenedor de la palabra "Productos" + la flecha
+  const submenuWrapper = document.querySelector('.mobile-nav-link-wrapper');
   const submenuList = document.getElementById('mobile-submenu');
+  const toggleIcon = document.querySelector('#mobile-submenu-toggle svg');
 
   if (!menuToggle || !mobileMenu) return;
 
@@ -54,27 +57,27 @@ function initMobileMenu() {
       body.style.overflow = 'hidden';
     } else {
       body.style.overflow = '';
-      // Resetear submenú al cerrar
+      // Resetear submenú al cerrar el menú principal
       if(submenuList) {
         submenuList.style.maxHeight = null;
         submenuList.classList.remove('expanded');
-        submenuToggleBtn.querySelector('svg').style.transform = 'rotate(0deg)';
+        if(toggleIcon) toggleIcon.style.transform = 'rotate(0deg)';
       }
     }
   });
 
-  // Lógica del Acordeón para "Productos"
-  if (submenuToggleBtn && submenuList) {
-    submenuToggleBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
+  // Lógica del Acordeón para "Productos" (Mejorada)
+  if (submenuWrapper && submenuList) {
+    submenuWrapper.addEventListener('click', (e) => {
+      e.preventDefault(); // Evita que la página salte
       submenuList.classList.toggle('expanded');
       
-      if (submenuList.style.maxHeight) {
-        submenuList.style.maxHeight = null;
-        submenuToggleBtn.querySelector('svg').style.transform = 'rotate(0deg)';
-      } else {
+      if (submenuList.classList.contains('expanded')) {
         submenuList.style.maxHeight = submenuList.scrollHeight + "px";
-        submenuToggleBtn.querySelector('svg').style.transform = 'rotate(180deg)';
+        if(toggleIcon) toggleIcon.style.transform = 'rotate(180deg)';
+      } else {
+        submenuList.style.maxHeight = null;
+        if(toggleIcon) toggleIcon.style.transform = 'rotate(0deg)';
       }
     });
   }
