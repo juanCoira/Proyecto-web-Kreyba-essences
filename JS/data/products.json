@@ -1,66 +1,62 @@
 [
   {
-    "id": "PRD-001",
-    "name": "Oud Imperial",
-    "inspiredBy": "Tom Ford Oud Wood",
-    "price": 45000,
-    "category": "Perfumes",
-    "gender": "Unisex",
-    "olfactoryFamily": "Amaderada",
-    "notes": {
-      "top": "Palo de rosa, Cardamomo",
-      "heart": "Madera de Oud, Sándalo",
-      "base": "Vainilla, Ámbar"
-    },
-    "image": "https://placehold.co/600x800/EAE6DF/111111?text=OUD+IMPERIAL",
-    "badges": ["Más vendido", "Premium"]
-  },
-  {
-    "id": "PRD-002",
+    "id": "PRD-M01",
     "name": "Santal Rouge",
     "inspiredBy": "Baccarat Rouge 540",
     "price": 48000,
-    "category": "Perfumes",
-    "gender": "Femenino",
+    "category": "mujer",
+    "categoryName": "Perfumes Mujer",
     "olfactoryFamily": "Floral Oriental",
-    "notes": {
-      "top": "Azafrán, Jazmín",
-      "heart": "Amberwood, Ámbar gris",
-      "base": "Resina de abeto, Cedro"
-    },
-    "image": "https://placehold.co/600x800/F2EBE5/111111?text=SANTAL+ROUGE",
-    "badges": ["Edición Limitada"]
+    "notes": { "top": "Azafrán, Jazmín", "heart": "Amberwood", "base": "Resina de abeto" },
+    "image": "https://placehold.co/600x800/F2EBE5/111111?text=SANTAL+ROUGE\n(Mujer)",
+    "badges": ["Más vendido", "Premium"]
   },
   {
-    "id": "PRD-003",
+    "id": "PRD-H01",
     "name": "Aqua Di Nuit",
     "inspiredBy": "Acqua Di Gio Profumo",
     "price": 42000,
-    "category": "Perfumes",
-    "gender": "Masculino",
+    "category": "hombre",
+    "categoryName": "Perfumes Hombre",
     "olfactoryFamily": "Acuática Aromática",
-    "notes": {
-      "top": "Notas marinas, Bergamota",
-      "heart": "Romero, Salvia",
-      "base": "Incienso, Pachulí"
-    },
-    "image": "https://placehold.co/600x800/EAE6DF/111111?text=AQUA+DI+NUIT",
+    "notes": { "top": "Notas marinas", "heart": "Romero, Salvia", "base": "Incienso" },
+    "image": "https://placehold.co/600x800/EAE6DF/111111?text=AQUA+DI+NUIT\n(Hombre)",
     "badges": ["Nuevo"]
   },
   {
-    "id": "PRD-004",
-    "name": "Esencia Vainilla Noir",
+    "id": "PRD-I01",
+    "name": "Oud Imperial Absolu",
+    "inspiredBy": "Tom Ford Oud Wood",
+    "price": 65000,
+    "category": "importados",
+    "categoryName": "Importados",
+    "olfactoryFamily": "Amaderada",
+    "notes": { "top": "Palo de rosa", "heart": "Madera de Oud", "base": "Vainilla, Ámbar" },
+    "image": "https://placehold.co/600x800/111111/C5A059?text=OUD+IMPERIAL\n(Importado)",
+    "badges": ["Edición Limitada"]
+  },
+  {
+    "id": "PRD-E01",
+    "name": "Difusor Vainilla Noir",
     "inspiredBy": "Creación Exclusiva",
     "price": 15000,
-    "category": "Esencias",
-    "gender": "Home",
+    "category": "esencias",
+    "categoryName": "Esencias de Hogar",
     "olfactoryFamily": "Gourmand",
-    "notes": {
-      "top": "Almendra tostada",
-      "heart": "Orquídea de vainilla",
-      "base": "Haba Tonka, Almizcle"
-    },
-    "image": "https://placehold.co/600x800/C5A059/FFFFFF?text=VAINILLA+NOIR",
+    "notes": { "top": "Almendra tostada", "heart": "Orquídea", "base": "Haba Tonka" },
+    "image": "https://placehold.co/600x800/C5A059/FFFFFF?text=VAINILLA+NOIR\n(Esencia)",
     "badges": []
+  },
+  {
+    "id": "PRD-C01",
+    "name": "Combo Signature Collection",
+    "inspiredBy": "Selección Kreyba",
+    "price": 85000,
+    "category": "combos",
+    "categoryName": "Combos & Regalos",
+    "olfactoryFamily": "Variada",
+    "notes": { "top": "-", "heart": "Incluye 3 fragancias", "base": "-" },
+    "image": "https://placehold.co/600x800/F8F8F8/111111?text=SIGNATURE+SET\n(Combo)",
+    "badges": ["Oferta", "Regalo Ideal"]
   }
 ]

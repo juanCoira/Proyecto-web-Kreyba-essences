@@ -4,12 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>KREYBA ESSENCES | Tienda Oficial</title>
-  <link rel="stylesheet" href="CSS/base.css">
-  <link rel="stylesheet" href="CSS/layout.css">
-  <link rel="stylesheet" href="CSS/components.css">
-  <link rel="stylesheet" href="CSS/animations.css">
-  <link rel="stylesheet" href="CSS/responsive.css">
-</head> 
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
 <body>
 
   <div id="scroll-progress" class="scroll-progress-bar"></div>
@@ -17,19 +17,15 @@
   <!-- HEADER PRINCIPAL -->
   <header id="main-header" class="main-header">
     <div class="container header-container">
-      
       <div class="header-left">
         <button id="menu-toggle" class="menu-toggle" aria-label="Abrir menú de navegación">
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
           <span class="hamburger-line"></span>
         </button>
-        
         <nav class="desktop-nav">
           <ul class="nav-list">
             <li><a href="#inicio" class="nav-link active">Inicio</a></li>
-            
-            <!-- DROPDOWN DESKTOP PREMIUM -->
             <li class="nav-item-dropdown">
               <a href="#productos" class="nav-link" style="display: flex; align-items: center; gap: 4px;">
                 Productos
@@ -43,7 +39,6 @@
                 <li><a href="#combos">Combos & Regalos</a></li>
               </ul>
             </li>
-            
             <li><a href="#promociones" class="nav-link">Promociones</a></li>
           </ul>
         </nav>
@@ -62,12 +57,10 @@
             <li><a href="#contacto" class="nav-link">Contacto</a></li>
           </ul>
         </nav>
-        
         <div class="header-actions">
           <button id="theme-toggle" class="action-btn" aria-label="Cambiar modo de luz">
             <svg class="icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="1.5" fill="none"><path d="M12 3a9 9 0 1 0 9 9c0-.46-.04-.92-.1-1.36a5.38 5.38 0 0 1-4.4 2.11 5.4 5.4 0 0 1-5.4-5.4c0-1.8 1-3.37 2.47-4.19A9 9 0 0 0 12 3z"/></svg>
           </button>
-          
           <button id="cart-toggle" class="action-btn cart-btn" aria-label="Ver carrito">
             <svg class="icon" viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="1.5" fill="none"><path d="M6 2L3.05 6.79A2 2 0 0 0 3 7.78V19a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V7.78a2 2 0 0 0-.05-.99L18 2H6z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
             <span id="cart-count" class="cart-badge">0</span>
@@ -82,8 +75,6 @@
     <div class="mobile-menu-content">
       <ul class="mobile-nav-list">
         <li><a href="#inicio" class="mobile-nav-link">Inicio</a></li>
-        
-        <!-- ACORDEÓN MOBILE -->
         <li class="mobile-dropdown-container">
           <div class="mobile-nav-link-wrapper">
             <span class="mobile-nav-link">Productos</span>
@@ -99,7 +90,6 @@
             <li><a href="#combos" class="mobile-sub-link">Combos & Regalos</a></li>
           </ul>
         </li>
-
         <li><a href="#promociones" class="mobile-nav-link">Promociones</a></li>
         <li><a href="#nosotros" class="mobile-nav-link">Nosotros</a></li>
         <li><a href="#contacto" class="mobile-nav-link">Contacto</a></li>
@@ -107,17 +97,103 @@
     </div>
   </div>
 
-  <!-- ZONA DE PRUEBAS DE LAYOUT -->
-  <main id="main-content" style="padding: var(--spacing-xl) 0; min-height: 200vh;">
-    <div class="container">
-      <h1 style="text-align: center; margin-bottom: var(--spacing-lg); font-weight: 300; font-size: 2.5rem; letter-spacing: 0.1em; padding-top: var(--spacing-lg);">CATÁLOGO</h1>
-      <div id="test-product-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--spacing-md);">
-        <!-- Cards inyectadas por JS -->
+  <!-- HERO SECTION -->
+  <section id="inicio" class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content">
+      <span class="hero-subtitle slide-up-1">Nueva Colección 2026</span>
+      <h1 class="hero-title slide-up-2">La Esencia de la<br>Elegancia</h1>
+      <p class="hero-description slide-up-3">Descubre fragancias inspiradas en el lujo y diseñadas para perdurar. Minimalismo en cada gota.</p>
+      <div class="hero-actions slide-up-4">
+        <a href="#productos" class="btn btn-primary">Ver Productos</a>
+        <a href="#promociones" class="btn btn-outline">Promociones</a>
       </div>
     </div>
-  </main>
+    <a href="#productos" class="scroll-indicator fade-in-delayed" aria-label="Bajar a productos">
+      <span class="mouse"><span class="wheel"></span></span>
+    </a>
+  </section>
 
-  <script src="JS/components/ui.js"></script>
-  <script src="JS/main.js"></script>
+  <!-- ==============================================
+       SECCIÓN: PRODUCTOS
+       ============================================== -->
+  <section id="productos" class="section-padding bg-alt">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-subtitle">Catálogo</span>
+        <h2 class="section-title">Nuestras Creaciones</h2>
+      </div>
+      
+      <!-- Grilla donde JS inyectará las Cards Premium -->
+      <div id="product-grid" class="product-grid"></div>
+      
+      <div style="text-align: center; margin-top: var(--spacing-lg);">
+        <a href="#productos" class="btn btn-outline">Ver Todo el Catálogo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SECCIÓN: NOSOTROS
+       ============================================== -->
+  <section id="nosotros" class="section-padding">
+    <div class="container about-grid">
+      <div class="about-image-wrapper">
+        <!-- SOLUCIÓN: Imagen con dominio seguro que no bloquean las extensiones -->
+        <img src="https://placehold.co/800x1000/EAE6DF/111111?text=KREYBA\nESSENCES\n(Nosotros)" alt="Creación de esencias Kreyba" class="about-image">
+      </div>
+      <div class="about-content">
+        <span class="section-subtitle">La Marca</span>
+        <h2 class="section-title">Minimalismo que perdura</h2>
+        <p class="about-text">En Kreyba Essences creemos que el verdadero lujo reside en la sutileza. Nuestras fragancias están formuladas con las materias primas más exclusivas, buscando evocar recuerdos y despertar los sentidos sin saturar.</p>
+        <p class="about-text">Inspirados en la filosofía de menos es más, cada frasco es una declaración de intenciones: elegancia pura, duración extrema y una presencia inconfundible.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==============================================
+       SECCIÓN: CONTACTO
+       ============================================== -->
+  <section id="contacto" class="section-padding bg-alt">
+    <div class="container contact-grid">
+      <div class="contact-info">
+        <span class="section-subtitle">Atención Exclusiva</span>
+        <h2 class="section-title">Hablemos</h2>
+        <p class="about-text">Estamos aquí para asesorarte y ayudarte a encontrar tu firma olfativa ideal.</p>
+        
+        <ul class="contact-list">
+          <li>
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="1.5" fill="none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+54 9 11 1234-5678</span>
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="1.5" fill="none"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            <span>contacto@kreybaessences.com</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="contact-form-wrapper">
+        <form class="premium-form">
+          <div class="form-group">
+            <input type="text" id="name" class="form-input" placeholder=" " required>
+            <label for="name" class="form-label">Nombre completo</label>
+          </div>
+          <div class="form-group">
+            <input type="email" id="email" class="form-input" placeholder=" " required>
+            <label for="email" class="form-label">Correo electrónico</label>
+          </div>
+          <div class="form-group">
+            <textarea id="message" class="form-input" rows="4" placeholder=" " required></textarea>
+            <label for="message" class="form-label">¿En qué podemos ayudarte?</label>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%;">Enviar Mensaje</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script src="js/components/ui.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>

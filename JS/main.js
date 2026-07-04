@@ -3,39 +3,65 @@
    ========================================================================== */
 
 document.addEventListener('DOMContentLoaded', () => {
-  // Inicializamos la UI
-  window.UI.init();
+  // 1. Inicializamos la Interfaz de Usuario
+  if(window.UI) {
+    window.UI.init();
+  }
 
-  // Cargamos los productos para testeo visual
-  loadTestProducts();
+  // 2. Cargamos el catálogo dinámico
+  renderProducts();
 });
 
 /**
- * Función temporal para inyectar tarjetas y probar la responsividad del layout
+ * Función que obtiene el JSON y renderiza las Cards Premium
  */
-async function loadTestProducts() {
+async function renderProducts() {
   try {
-    const response = await fetch('js/data/products.json');
-    if (!response.ok) throw new Error('Error al cargar JSON');
+    const response = await fetch('./js/data/products.json');
+    if (!response.ok) throw new Error('Error al cargar la base de datos de productos.');
     
     const products = await response.json();
-    const grid = document.getElementById('test-product-grid');
+    const grid = document.getElementById('product-grid');
     
     if (!grid) return;
 
-    grid.innerHTML = products.map(product => `
-      <div style="border: 1px solid var(--glass-border); padding: var(--spacing-sm); border-radius: var(--radius-lg); background: var(--glass-bg); display: flex; flex-direction: column; gap: var(--spacing-xs);">
-        <img src="${product.image}" alt="${product.name}" style="border-radius: var(--radius-md); width: 100%; aspect-ratio: 3/4; object-fit: cover;">
-        <div style="padding: var(--spacing-xs) 0;">
-          <p style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-gold-mate);">${product.category}</p>
-          <h3 style="font-size: 1.25rem; font-weight: 400;">${product.name}</h3>
-          <p style="color: var(--color-text-muted); font-size: 0.85rem; margin-bottom: var(--spacing-sm);">Inspirado en: ${product.inspiredBy}</p>
-          <p style="font-weight: 500; font-size: 1.1rem;">$${product.price.toLocaleString('es-AR')}</p>
-        </div>
-      </div>
-    `).join('');
+    // Mapeamos los productos a nuestro nuevo HTML premium
+    grid.innerHTML = products.map(product => {
+      
+      // Lógica para crear las etiquetas (Badges) dinámicamente
+      let badgesHTML = '';
+      if (product.badges && product.badges.length > 0) {
+        badgesHTML = `<div class="badges-container">
+                        ${product.badges.map(badge => `<span class="badge">${badge}</span>`).join('')}
+                      </div>`;
+      }
+
+      return `
+        <article class="product-card">
+          <div class="product-image-container">
+            ${badgesHTML}
+            <img src="${product.image}" alt="${product.name}" class="product-img" loading="lazy">
+          </div>
+          
+          <div class="product-info">
+            <span class="product-category">${product.categoryName}</span>
+            <h3 class="product-name">${product.name}</h3>
+            <span class="product-inspiration">Inspirado en: ${product.inspiredBy}</span>
+            <span class="product-price">$${product.price.toLocaleString('es-AR')}</span>
+            
+            <button class="btn-add-cart" onclick="console.log('Agregado: ${product.name}')">
+              Agregar al Carrito
+            </button>
+          </div>
+        </article>
+      `;
+    }).join('');
     
   } catch (error) {
     console.error('Error cargando los productos:', error);
+    const grid = document.getElementById('product-grid');
+    if(grid) {
+      grid.innerHTML = `<p style="text-align:center; width:100%; color:var(--color-text-muted);">El catálogo se está actualizando. Vuelve en unos instantes.</p>`;
+    }
   }
 }

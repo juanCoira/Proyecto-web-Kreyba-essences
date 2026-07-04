@@ -40,15 +40,13 @@ function initMobileMenu() {
   const menuToggle = document.getElementById('menu-toggle');
   const mobileMenu = document.getElementById('mobile-menu');
   const body = document.body;
-  
-  // Ahora seleccionamos TODO el contenedor de la palabra "Productos" + la flecha
   const submenuWrapper = document.querySelector('.mobile-nav-link-wrapper');
   const submenuList = document.getElementById('mobile-submenu');
   const toggleIcon = document.querySelector('#mobile-submenu-toggle svg');
 
   if (!menuToggle || !mobileMenu) return;
 
-  // Abrir/Cerrar menú principal
+  // Abrir/Cerrar menú principal desde la hamburguesa
   menuToggle.addEventListener('click', () => {
     menuToggle.classList.toggle('is-active');
     mobileMenu.classList.toggle('active');
@@ -57,7 +55,6 @@ function initMobileMenu() {
       body.style.overflow = 'hidden';
     } else {
       body.style.overflow = '';
-      // Resetear submenú al cerrar el menú principal
       if(submenuList) {
         submenuList.style.maxHeight = null;
         submenuList.classList.remove('expanded');
@@ -66,10 +63,10 @@ function initMobileMenu() {
     }
   });
 
-  // Lógica del Acordeón para "Productos" (Mejorada)
+  // Lógica del Acordeón para "Productos"
   if (submenuWrapper && submenuList) {
     submenuWrapper.addEventListener('click', (e) => {
-      e.preventDefault(); // Evita que la página salte
+      e.preventDefault();
       submenuList.classList.toggle('expanded');
       
       if (submenuList.classList.contains('expanded')) {
@@ -81,22 +78,55 @@ function initMobileMenu() {
       }
     });
   }
+}
 
-  // Cerrar menú al hacer click en links finales
-  const mobileLinks = mobileMenu.querySelectorAll('a:not(.mobile-nav-link-wrapper a)');
-  mobileLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      menuToggle.classList.remove('is-active');
-      mobileMenu.classList.remove('active');
-      body.style.overflow = '';
+/**
+ * NUEVO: Sistema robusto de navegación para anclas (#nosotros, #contacto, etc.)
+ */
+function initSmoothScroll() {
+  // Seleccionamos todos los enlaces que empiezan con "#"
+  const internalLinks = document.querySelectorAll('a[href^="#"]');
+
+  internalLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+
+      // Si el enlace es solo un # vacío o apunta a los dropdowns internos, lo ignoramos
+      if (targetId === '#' || targetId === '#mujer' || targetId === '#hombre' || targetId === '#importados' || targetId === '#esencias' || targetId === '#combos') return;
+
+      const targetElement = document.querySelector(targetId);
+      
+      if (targetElement) {
+        e.preventDefault(); // Detenemos el salto brusco y roto del navegador
+
+        // 1. Cerramos el menú móvil (si está abierto) y devolvemos la movilidad a la página
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuToggle = document.getElementById('menu-toggle');
+        
+        if (mobileMenu && mobileMenu.classList.contains('active')) {
+          mobileMenu.classList.remove('active');
+          if(menuToggle) menuToggle.classList.remove('is-active');
+          document.body.style.overflow = '';
+        }
+
+        // 2. Esperamos 50ms (imperceptible) para asegurar que la página ya es scrolleable, y luego viajamos a la sección
+        setTimeout(() => {
+          targetElement.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start' // Asegura que el título quede en la parte superior
+          });
+        }, 50);
+      }
     });
   });
 }
 
+// Exportamos las funciones al objeto global UI para que main.js lo inicie
 window.UI = {
   init: () => {
     initHeaderScroll();
     initThemeToggle();
     initMobileMenu();
+    initSmoothScroll(); // Inicializamos el nuevo sistema de navegación
   }
 };
