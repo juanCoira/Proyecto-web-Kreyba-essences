@@ -1,5 +1,5 @@
 /* ==========================================================================
-   KREYBA ESSENCES - Componentes UI (Botones, Cards, Inputs, etc.)
+   KREYBA ESSENCES - Componentes UI (Botones, Cards, Inputs, Carrito)
    ========================================================================== */
 
 /* --- BOTONES PREMIUM --- */
@@ -15,188 +15,79 @@
 .btn-outline { background-color: transparent; color: var(--color-text); border: 1px solid var(--color-text); }
 .btn-outline:hover { background-color: var(--color-text); color: var(--color-bg); transform: translateY(-2px); }
 
-/* --- PRODUCT CARDS (ESTILO SAKURA/APPLE) --- */
-.product-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: var(--spacing-md);
-}
+/* --- PRODUCT CARDS --- */
+.product-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--spacing-md); }
+.product-card { position: relative; display: flex; flex-direction: column; background-color: transparent; transition: transform var(--transition-base); cursor: pointer; }
+.product-card:hover { transform: translateY(-5px); }
 
-.product-card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  background-color: transparent;
-  transition: transform var(--transition-base);
-  cursor: pointer;
-}
+.product-image-container { position: relative; width: 100%; aspect-ratio: 3 / 4; overflow: hidden; border-radius: var(--radius-md); background-color: var(--glass-bg); margin-bottom: var(--spacing-sm); }
+.product-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1); }
+.product-card:hover .product-img { transform: scale(1.05); }
 
-.product-card:hover {
-  transform: translateY(-5px); /* Pequeña elevación */
-}
+.badges-container { position: absolute; top: 10px; left: 10px; display: flex; flex-direction: column; gap: 4px; z-index: 2; }
+.badge { background-color: var(--glass-bg); backdrop-filter: var(--glass-blur); color: var(--color-text); font-size: 0.65rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.1em; padding: 4px 8px; border-radius: 2px; border: 1px solid var(--glass-border); }
 
-/* Contenedor de la foto con Overflow para zoom interior */
-.product-image-container {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  border-radius: var(--radius-md);
-  background-color: var(--glass-bg);
-  margin-bottom: var(--spacing-sm);
-}
+.product-info { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.product-category { font-size: 0.70rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-gold-mate); margin-bottom: 4px; }
+.product-name { font-size: 1.25rem; font-weight: 400; color: var(--color-text); margin-bottom: 4px; }
+.product-inspiration { font-size: 0.80rem; color: var(--color-text-muted); margin-bottom: var(--spacing-sm); }
+.product-price { font-size: 1.1rem; font-weight: 500; color: var(--color-text); margin-bottom: var(--spacing-sm); }
 
-.product-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.product-card:hover .product-img {
-  transform: scale(1.05); /* Zoom elegante a la foto */
-}
-
-/* Badges (Etiquetas "Nuevo", "Premium") */
-.badges-container {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  z-index: 2;
-}
-
-.badge {
-  background-color: var(--glass-bg);
-  backdrop-filter: var(--glass-blur);
-  color: var(--color-text);
-  font-size: 0.65rem;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  padding: 4px 8px;
-  border-radius: 2px;
-  border: 1px solid var(--glass-border);
-}
-
-/* Información de la carta */
-.product-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center; /* Centrado editorial */
-  text-align: center;
-}
-
-.product-category {
-  font-size: 0.70rem;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  color: var(--color-gold-mate);
-  margin-bottom: 4px;
-}
-
-.product-name {
-  font-size: 1.25rem;
-  font-weight: 400;
-  color: var(--color-text);
-  margin-bottom: 4px;
-}
-
-.product-inspiration {
-  font-size: 0.80rem;
-  color: var(--color-text-muted);
-  margin-bottom: var(--spacing-sm);
-}
-
-.product-price {
-  font-size: 1.1rem;
-  font-weight: 500;
-  color: var(--color-text);
-  margin-bottom: var(--spacing-sm);
-}
-
-/* Botón de agregar que aparece en la card */
-.btn-add-cart {
-  width: 100%;
-  padding: 10px;
-  background-color: transparent;
-  color: var(--color-text);
-  border: 1px solid var(--color-text);
-  border-radius: 50px;
-  font-size: 0.75rem;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  cursor: pointer;
-  transition: all var(--transition-base);
-}
-
-.btn-add-cart:hover {
-  background-color: var(--color-text);
-  color: var(--color-bg);
-}
+.btn-add-cart { width: 100%; padding: 10px; background-color: transparent; color: var(--color-text); border: 1px solid var(--color-text); border-radius: 50px; font-size: 0.75rem; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; cursor: pointer; transition: all var(--transition-base); }
+.btn-add-cart:hover { background-color: var(--color-text); color: var(--color-bg); }
 
 /* --- FORMULARIOS PREMIUM (FLOATING LABELS) --- */
-.premium-form {
-  display: flex;
-  flex-direction: column;
-  gap: var(--spacing-md);
-  background-color: var(--glass-bg);
-  padding: var(--spacing-md);
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--glass-border);
-}
+.premium-form { display: flex; flex-direction: column; gap: var(--spacing-md); background-color: var(--glass-bg); padding: var(--spacing-md); border-radius: var(--radius-lg); border: 1px solid var(--glass-border); }
+.form-group { position: relative; width: 100%; }
+.form-input { width: 100%; padding: 12px 0; font-size: 1rem; color: var(--color-text); background-color: transparent; border: none; border-bottom: 1px solid var(--color-text-muted); transition: border-color var(--transition-base); }
+.form-input:-webkit-autofill { -webkit-box-shadow: 0 0 0 30px var(--color-bg) inset; -webkit-text-fill-color: var(--color-text); }
+.form-input:focus { outline: none; border-bottom-color: var(--color-text); }
+.form-label { position: absolute; top: 12px; left: 0; font-size: 1rem; color: var(--color-text-muted); pointer-events: none; transition: all 0.3s ease; }
+.form-input:focus ~ .form-label, .form-input:not(:placeholder-shown) ~ .form-label { top: -12px; font-size: 0.75rem; color: var(--color-text); letter-spacing: 0.05em; text-transform: uppercase; }
+textarea.form-input { resize: vertical; min-height: 100px; }
 
-.form-group {
-  position: relative;
-  width: 100%;
+/* ==========================================================================
+   PANEL LATERAL DEL CARRITO (OFF-CANVAS)
+   ========================================================================== */
+.cart-overlay {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100dvh;
+  background-color: rgba(0, 0, 0, 0.4); backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+  z-index: 1050; opacity: 0; visibility: hidden; transition: opacity 0.4s ease, visibility 0.4s;
 }
+.cart-overlay.active { opacity: 1; visibility: visible; }
 
-.form-input {
-  width: 100%;
-  padding: 12px 0;
-  font-size: 1rem;
-  color: var(--color-text);
-  background-color: transparent;
-  border: none;
-  border-bottom: 1px solid var(--color-text-muted);
-  transition: border-color var(--transition-base);
+.cart-sidebar {
+  position: absolute; top: 0; right: 0; width: 100%; max-width: 400px; height: 100%;
+  background-color: var(--color-bg); box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+  display: flex; flex-direction: column; transform: translateX(100%);
+  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
+.cart-overlay.active .cart-sidebar { transform: translateX(0); }
+[data-theme="dark"] .cart-sidebar { border-left: 1px solid var(--glass-border); }
 
-/* Evita que los navegadores pinten el fondo azul por defecto */
-.form-input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 30px var(--color-bg) inset;
-  -webkit-text-fill-color: var(--color-text);
+.cart-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--spacing-md); border-bottom: 1px solid var(--glass-border);
 }
+.cart-title { font-size: 1.2rem; font-weight: 300; text-transform: uppercase; letter-spacing: 0.1em; color: var(--color-text); }
 
-.form-input:focus {
-  outline: none;
-  border-bottom-color: var(--color-text);
-}
+.cart-items-container { flex: 1; overflow-y: auto; padding: var(--spacing-md); display: flex; flex-direction: column; gap: var(--spacing-md); }
+.empty-cart-msg { text-align: center; color: var(--color-text-muted); font-size: 0.9rem; margin-top: var(--spacing-lg); }
 
-.form-label {
-  position: absolute;
-  top: 12px;
-  left: 0;
-  font-size: 1rem;
-  color: var(--color-text-muted);
-  pointer-events: none;
-  transition: all 0.3s ease;
-}
+.cart-item { display: flex; gap: var(--spacing-sm); padding-bottom: var(--spacing-sm); border-bottom: 1px solid var(--glass-border); }
+.cart-item-img { width: 70px; height: 90px; object-fit: cover; border-radius: var(--radius-sm); }
+.cart-item-details { flex: 1; display: flex; flex-direction: column; justify-content: space-between; }
+.cart-item-title { font-size: 0.9rem; font-weight: 500; color: var(--color-text); }
+.cart-item-price { font-size: 0.9rem; color: var(--color-gold-mate); }
 
-/* Efecto Floating Label: Cuando está focus o no está vacío, sube el texto */
-.form-input:focus ~ .form-label,
-.form-input:not(:placeholder-shown) ~ .form-label {
-  top: -12px;
-  font-size: 0.75rem;
-  color: var(--color-text);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
+.cart-item-actions { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }
+.qty-selector { display: flex; align-items: center; border: 1px solid var(--glass-border); border-radius: 50px; overflow: hidden; }
+.qty-btn { width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; background: transparent; color: var(--color-text); font-size: 1.2rem; cursor: pointer; transition: background 0.3s; }
+.qty-btn:hover { background-color: var(--color-bg-alt); }
+.qty-value { font-size: 0.85rem; width: 24px; text-align: center; font-weight: 500; color: var(--color-text); }
+.remove-btn { color: var(--color-text-muted); font-size: 0.75rem; text-transform: uppercase; cursor: pointer; border-bottom: 1px solid transparent; transition: all 0.3s; }
+.remove-btn:hover { color: #d9534f; border-color: #d9534f; }
 
-textarea.form-input {
-  resize: vertical;
-  min-height: 100px;
-}
+.cart-footer { padding: var(--spacing-md); border-top: 1px solid var(--glass-border); background-color: var(--glass-bg); }
+.cart-total-row { display: flex; justify-content: space-between; font-size: 0.9rem; color: var(--color-text-muted); margin-bottom: var(--spacing-xs); text-transform: uppercase; letter-spacing: 0.05em;}
+.cart-total-final { font-size: 1.2rem; font-weight: 500; color: var(--color-text); margin-bottom: var(--spacing-md); }
